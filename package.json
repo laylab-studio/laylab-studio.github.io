@@ -1,0 +1,11 @@
+{
+  "name": "LayLab Web",
+  "description": "Site statique de présentation et téléchargement de l'application LayLab.",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "npx serve .",
+    "deploy": "npx gh-pages -d ."
+  },
+  "homepage": "https://YanX94.github.io/LayLabV2/web"
+}
