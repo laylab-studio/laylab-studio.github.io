@@ -91,7 +91,7 @@
   <section id="download" class="download">
     <h2><i class="fa-solid fa-download" aria-hidden="true"></i> Download LayLab</h2>
     <div class="download__grid">
-      <a href="https://github.com/laylab-studio/LayLab-Launcher/releases/download/v0.0.9/LayLab-Setup-0.0.9.exe"
+      <a id="download-windows" href="#"
         class="download__card">
         <img src="assets/images/windows.svg" alt="Windows">
         <span><i class="fa-brands fa-windows" aria-hidden="true"></i> Windows</span>
@@ -109,6 +109,30 @@
     GitHub</a></p>
   </section>
 
+  <script>
+    // Script pour mettre à jour dynamiquement le lien de téléchargement Windows
+    document.addEventListener('DOMContentLoaded', function () {
+      const btn = document.getElementById('download-windows');
+      if (!btn) return;
+      fetch('https://api.github.com/repos/laylab-studio/LayLab-Launcher/releases/latest')
+        .then(r => r.json())
+        .then(data => {
+          if (!data.assets) return;
+          const exe = data.assets.find(a => a.name.endsWith('.exe'));
+          if (exe && exe.browser_download_url) {
+            btn.href = exe.browser_download_url;
+            btn.setAttribute('target', '_blank');
+          } else {
+            btn.href = '#';
+            btn.textContent = 'Not available';
+          }
+        })
+        .catch(() => {
+          btn.href = '#';
+          btn.textContent = 'Error';
+        });
+    });
+  </script>
   <!-- ! About Section -->
   <section class="about">
     <h2>About LayLab</h2>
