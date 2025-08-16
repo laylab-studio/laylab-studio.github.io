@@ -1,115 +1,294 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>LayLab – Presentation & Download</title>
-  <link rel="stylesheet" href="assets/style/style.css">
-  <link rel="icon" href="assets/images/logo.png">
-  <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.4.2/css/all.css" />
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NinjaTech AI - Premium In-Game Overlays</title>
+    <meta name="description" content="Custom premium in-game overlays for Predecessor, CS2, and League of Legends by NinjaTech AI.">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="images/favicon.png" type="image/png">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+<script src="https://sites.super.myninja.ai/_assets/ninja-daytona-script.js"></script>
 </head>
-
 <body>
-  <!-- ! LayLab Hero Section -->
-  <header class="hero">
-    <div class="hero__bg"></div>
-      <img src="assets/images/logo.png" alt="LayLab Logo" class="hero__logo">
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <img src="images/logo.png" alt="NinjaTech AI Logo">
+                <div class="logo-text"></div>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#games">Games</a></li>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#screenshots">Screenshots</a></li>
+                    <li><a href="#download">Download</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
 
-    <div class="hero__content">
-      <div class="hero__content-bg"></div>
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content fade-in">
+                <h1>Elevate Your Gaming Experience</h1>
+                <p>Custom premium in-game overlays for Predecessor, CS2, and League of Legends. Stay in the action with real-time stats and insights without ever alt-tabbing.</p>
+                <div class="hero-buttons">
+                    <a href="#download" class="btn btn-primary">
+                        <i class="fas fa-download btn-icon"></i>
+                        Download Now
+                    </a>
+                    <a href="#features" class="btn btn-secondary">
+                        <i class="fas fa-info-circle btn-icon"></i>
+                        Learn More
+                    </a>
+                </div>
+            </div>
+            <img src="images/hero-app.png" alt="NinjaTech AI Overlay Interface" class="hero-image">
+        </div>
+    </section>
 
-      <p class="hero__subtitle">Custom premium in-game overlays for Predecessor, CS2, and League of Legends.</p>
-      <div class="hero__cta">
-  <a href="#download" class="btn btn--primary"><i class="fa-solid fa-download" aria-hidden="true"></i><span>Download</span></a>
-  <a href="#features" class="btn btn--ghost"><i class="fa-regular fa-compass" aria-hidden="true"></i><span>Discover</span></a>
-      </div>
-    </div>
-  </header>
+    <!-- Games Section -->
+    <section class="games" id="games">
+        <div class="container">
+            <div class="section-header slide-up">
+                <h2>Supported Games</h2>
+                <p>Our premium overlays are designed specifically for these popular competitive games, with more coming soon.</p>
+            </div>
+            <div class="games-grid">
+                <!-- Predecessor Card -->
+                <div class="game-card slide-up">
+                    <img src="images/predecessor.png" alt="Predecessor" class="game-card-image">
+                    <div class="game-card-content">
+                        <h3>Predecessor</h3>
+                        <p>Access real-time hero stats, item builds, and counter picks without leaving your game.</p>
+                        <div class="game-card-footer">
+                            <a href="#download" class="btn btn-primary">Launch</a>
+                            <span class="status-tag status-available">Available</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- CS2 Card -->
+                <div class="game-card slide-up" style="animation-delay: 0.2s;">
+                    <img src="images/cs2.png" alt="Counter-Strike 2" class="game-card-image">
+                    <div class="game-card-content">
+                        <h3>Counter-Strike 2</h3>
+                        <p>Track weapon stats, economy suggestions, and team performance in real-time.</p>
+                        <div class="game-card-footer">
+                            <a href="#download" class="btn btn-primary">Launch</a>
+                            <span class="status-tag status-available">Available</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- League of Legends Card -->
+                <div class="game-card slide-up" style="animation-delay: 0.4s;">
+                    <img src="images/lol.png" alt="League of Legends" class="game-card-image">
+                    <div class="game-card-content">
+                        <h3>League of Legends</h3>
+                        <p>Champion matchups, jungle timers, and build recommendations at your fingertips.</p>
+                        <div class="game-card-footer">
+                            <a href="#download" class="btn btn-primary">Launch</a>
+                            <span class="status-tag status-available">Available</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <!-- ! News Section -->
-  <section id="news" class="news">
-  <h2><i class="fa-solid fa-newspaper" aria-hidden="true"></i> News</h2>
-    <div class="news__grid">
-      <!-- Example news card, duplicate and edit as needed -->
-      <article class="news__card">
-        <div class="news__badge news__badge--release"><i class="fa-solid fa-rocket" aria-hidden="true"></i> RELEASE</div>
-        <h3>Predecessor Overlay is out!</h3>
-        <div class="news__meta">Aug 2025 • 3 min read</div>
-        <p>Our in-game overlay for Predecessor is now available. Try it and never alt-tab again while you
-          play!</p>
-      </article>
-      <article class="news__card">
-        <div class="news__badge news__badge--dev"><i class="fa-solid fa-code" aria-hidden="true"></i> DEV UPDATE</div>
-        <h3>CS2 Overlay is on the way…</h3>
-        <div class="news__meta">Aug 2025 • 2 min read</div>
-        <p>We’re working hard to bring LayLab overlays to CS2. Stay tuned for more updates!</p>
-      </article>
-      <article class="news__card">
-        <div class="news__badge news__badge--news"><i class="fa-solid fa-newspaper" aria-hidden="true"></i> NEWS</div>
-        <h3>Join us on Discord!</h3>
-        <div class="news__meta">Jul 2025 • 1 min read</div>
-        <p>Connect with the LayLab community, get support, and share your feedback on our Discord server.</p>
-      </article>
-    </div>
-  </section>
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="container">
+            <div class="section-header slide-up">
+                <h2>Main Features</h2>
+                <p>Designed by gamers for gamers, our overlay software provides everything you need to enhance your gameplay.</p>
+            </div>
+            <div class="features-grid">
+                <!-- Feature 1 -->
+                <div class="feature-card slide-up">
+                    <div class="feature-icon">
+                        <i class="fas fa-desktop"></i>
+                    </div>
+                    <h3>In-game Overlays</h3>
+                    <p>Seamlessly display in-game overlays for your favorite titles — so you never have to alt-tab again.</p>
+                </div>
+                
+                <!-- Feature 2 -->
+                <div class="feature-card slide-up" style="animation-delay: 0.2s;">
+                    <div class="feature-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3>Real-time Insights</h3>
+                    <p>Stay in the action with in-game overlays that deliver key stats and info for supported games — no alt-tab required.</p>
+                </div>
+                
+                <!-- Feature 3 -->
+                <div class="feature-card slide-up" style="animation-delay: 0.4s;">
+                    <div class="feature-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Community & Progression</h3>
+                    <p>Track your progress, unlock achievements, and connect within our ecosystem.</p>
+                </div>
+                
+                <!-- Feature 4 -->
+                <div class="feature-card slide-up" style="animation-delay: 0.6s;">
+                    <div class="feature-icon">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <h3>Customizable Interface</h3>
+                    <p>Personalize your overlay with custom themes, layouts, and information displays to match your preferences.</p>
+                </div>
+                
+                <!-- Feature 5 -->
+                <div class="feature-card slide-up" style="animation-delay: 0.8s;">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Performance Analytics</h3>
+                    <p>Track your gaming performance over time with detailed statistics and improvement suggestions.</p>
+                </div>
+                
+                <!-- Feature 6 -->
+                <div class="feature-card slide-up" style="animation-delay: 1s;">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Secure & Lightweight</h3>
+                    <p>Our overlay runs efficiently in the background with minimal resource usage and complete security.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <!-- ! Features Section -->
-  <section id="features" class="features">
-    <h2><i class="fa-solid fa-wand-magic-sparkles" aria-hidden="true"></i> Main Features</h2>
-    <div class="features__grid">
-      <div class="feature">
-        <!-- <img src="assets/images/feature-1.png" alt="In-game Overlays"> -->
-        <h3><i class="fa-solid fa-display" aria-hidden="true"></i> In-game Overlays</h3>
-        <p>Seamlessly display in-game overlays for your favorite titles — so you never have to alt-tab again.</p>
-      </div>
-      <div class="feature">
-        <!-- <img src="assets/images/feature-2.png" alt="Real-time Learning"> -->
-        <h3><i class="fa-solid fa-bolt" aria-hidden="true"></i> Real-time Insights</h3>
-        <p>Stay in the action with in-game overlays that deliver key stats and info for supported games — no alt-tab required.</p>
-      </div>
-      <div class="feature">
-        <!-- <img src="assets/images/feature-3.png" alt="Community & Progression"> -->
-        <h3><i class="fa-solid fa-users" aria-hidden="true"></i> Community & Progression</h3>
-        <p>Track your progress, unlock achievements, and connect within our ecosystem.</p>
-      </div>
-    </div>
-  </section>
+    <!-- Screenshots Section -->
+    <section class="screenshots" id="screenshots">
+        <div class="container">
+            <div class="section-header slide-up">
+                <h2>Screenshots</h2>
+                <p>See our overlay software in action across different games and features.</p>
+            </div>
+            <div class="screenshots-slider">
+                <div class="screenshot-item">
+                    <img src="images/screenshot-1.png" alt="NinjaTech AI Overlay Screenshot">
+                </div>
+                <!-- More screenshots would be added here with a slider in the JS implementation -->
+            </div>
+        </div>
+    </section>
 
-  <!-- ! Screenshots Section -->
-  <section class="screenshots">
-    <h2><i class="fa-solid fa-camera" aria-hidden="true"></i> Screenshots</h2>
-    <div class="screenshots__carousel">
-      <img src="assets/images/screen-1.png" alt="LayLab Screenshot 1">
-      <img src="assets/images/screen-2.png" alt="LayLab Screenshot 2">
-      <img src="assets/images/screen-3.png" alt="LayLab Screenshot 3">
-    </div>
-  </section>
+    <!-- Download Section -->
+    <section class="download" id="download">
+        <div class="container">
+            <div class="section-header slide-up">
+                <h2>Download LayLab</h2>
+                <p>Get started with our overlay software today and transform your gaming experience.</p>
+            </div>
+            <div class="download-content">
+                <div class="download-buttons">
+                    <a href="https://github.com/YanX94/LayLabV2" target="_blank" class="download-button" aria-hidden="true" id="download-windows">
+                        <i class="fab fa-windows download-icon"></i>
+                        <span class="download-platform">Windows</span>
+                        <span class="download-note">Lightweight & Free</span>
+                    </a>
+                
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <!-- ! Download Section -->
-  <section id="download" class="download">
-    <h2><i class="fa-solid fa-download" aria-hidden="true"></i> Download LayLab</h2>
-    <div class="download__grid">
-      <a id="download-windows" href="#"
-        class="download__card">
-        <img src="assets/images/windows.svg" alt="Windows">
-        <span><i class="fa-brands fa-windows" aria-hidden="true"></i> Windows</span>
-      </a>
-      <!-- <a href="https://github.com/laylab-studio/LayLab-Launcher/releases/download/v0.0.9/LayLab-Setup-0.0.9.exe" class="download__card">
-        <img src="assets/images/macos.svg" alt="macOS">
-        <span>macOS</span>
-      </a>
-      <a href="https://github.com/laylab-studio/LayLab-Launcher/releases/download/v0.0.9/LayLab-Setup-0.0.9.exe" class="download__card">
-        <img src="assets/images/linux.svg" alt="Linux">
-        <span>Linux</span>
-      </a> -->
-    </div>
-  <p class="download__note">Lightweight & free (with ads) – <a href="https://github.com/YanX94/LayLabV2" target="_blank"><i class="fa-brands fa-github" aria-hidden="true"></i> View on
-    GitHub</a></p>
-  </section>
+    <!-- About Section -->
+    <section class="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-image slide-right">
+                    <img src="images/about-image.png" alt="About NinjaTech AI">
+                </div>
+                <div class="about-text slide-up">
+                    <h2>About LayLab</h2>
+                    <p>LayLab delivers in-game overlays for Predecessor, CS2, and League of Legends, helping you stay prepared, track real-time stats, and avoid alt-tabbing. Built for gamers, by gamers.</p>
+                    <p>Our team of passionate gamers and developers created LayLab to solve the common problem of needing to alt-tab during intense gaming sessions to access critical information.</p>
+                    <a href="https://discord.gg/sv5k4XXctE" class="btn btn-primary">Join Our Discord</a>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <script>
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>LayLab</h3>
+                    <p>Premium in-game overlays for competitive gamers.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-discord"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Navigation</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#games">Games</a></li>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#screenshots">Screenshots</a></li>
+                        <li><a href="#download">Download</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="#">Documentation</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Support</a></li>
+                        <li><a href="#">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Legal</h3>
+                    <ul>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Cookie Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="copyright">
+                    &copy; 2025 LayLab. All rights reserved.
+                </div>
+                <div class="footer-links">
+                    <a href="#">Contact</a>
+                    <a href="#">Careers</a>
+         
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="js/main.js"></script>
+
+
+    <script>
     // Script pour mettre à jour dynamiquement le lien de téléchargement Windows
     document.addEventListener('DOMContentLoaded', function () {
       const btn = document.getElementById('download-windows');
@@ -133,21 +312,5 @@
         });
     });
   </script>
-  <!-- ! About Section -->
-  <section class="about">
-    <h2>About LayLab</h2>
-    <p>LayLab delivers in-game overlays for Predecessor, CS2, and League of Legends, helping you stay prepared, track real-time stats, and avoid alt-tabbing. Built for gamers, by gamers.</p>
-  </section>
-
-  <!-- ! Footer -->
-  <footer class="footer">
-    <div class="footer__socials">
-      <a href="https://x.com/laylabapp" target="_blank" aria-label="X (Twitter)"><i class="fa-brands fa-x-twitter" aria-hidden="true"></i></a>
-      <a href="https://discord.gg/laylab" target="_blank" aria-label="Discord"><i class="fa-brands fa-discord" aria-hidden="true"></i></a>
-      <a href="https://laylab.app" target="_blank" aria-label="Official Website"><i class="fa-solid fa-globe" aria-hidden="true"></i></a>
-    </div>
-    <div class="footer__copy">© 2025 LayLab. All rights reserved.</div>
-  </footer>
 </body>
-
 </html>
