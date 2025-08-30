@@ -44,6 +44,22 @@
     <!-- Hero Section -->
     <section class="hero" id="home">
         <div class="container">
+
+<script>async function loadNews() {
+  const response = await fetch("/api/changelog");
+  const changelogs = await response.json();
+  console.log(changelogs);
+}
+
+loadNews();
+</script>
+
+
+
+
+
+
+
             <div class="hero-content fade-in">
                 <h1>Elevate Your Gaming Experience</h1>
                 <p>Custom premium in-game overlays for Predecessor, CS2, and League of Legends. Stay in the action with real-time stats and insights without ever alt-tabbing.</p>
