@@ -217,6 +217,22 @@ nav ul li a:hover::after {
   color: var(--text-secondary);
 }
 
+.changelog-preview {
+  color: var(--text-secondary);
+  margin-bottom: 12px;
+}
+
+.changelog-full {
+  margin-bottom: 12px;
+  color: var(--text-secondary);
+}
+
+.changelog-toggle {
+  padding: 8px 12px;
+  font-size: 13px;
+  border-radius: 8px;
+}
+
 /* Hero Section */
 .hero {
   height: 100vh;

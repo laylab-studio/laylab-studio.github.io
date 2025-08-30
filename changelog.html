@@ -45,15 +45,15 @@
 
 
  <!-- Changelogs Section -->
-    <section class="changelogs" id="changelogs">
+    <section class="changelogs hero" id="changelogs">
         <div class="container">
             <div class="section-header slide-up">
                 <h2>Changelogs</h2>
-                <p>Suivez les mises à jour et les nouveautés du projet.</p>
+                <p>Follow every single update and new feature added to LayLab.</p>
             </div>
             <div id="changelogs-list" class="changelogs-list">
                 <!-- changelogs rendered here -->
-                <div class="changelog-placeholder">Chargement des changelogs...</div>
+                <div class="changelog-placeholder">Loading changelogs...</div>
             </div>
         </div>
     </section>
@@ -95,15 +95,70 @@
                         const date = document.createElement('div');
                         date.className = 'changelog-date';
                         date.textContent = item.date || '';
-                        const body = document.createElement('div');
-                        body.className = 'changelog-body';
-                        body.innerHTML = Array.isArray(item.changes) ? '<ul>' + item.changes.map(c => '<li>'+c+'</li>').join('') + '</ul>' : (item.description || '');
-                        el.appendChild(title);
-                        el.appendChild(date);
-                        el.appendChild(body);
+                                const body = document.createElement('div');
+                                body.className = 'changelog-body';
+
+                                // Normalize content: prefer item.changes (array), then description, then content/raw
+                                let fullHtml = '';
+                                if (Array.isArray(item.changes) && item.changes.length) {
+                                    fullHtml = '<ul>' + item.changes.map(c => '<li>'+escapeHtml(c)+'</li>').join('') + '</ul>';
+                                } else if (item.description) {
+                                    fullHtml = escapeHtml(item.description).replace(/\n/g, '<br>');
+                                } else if (item.content) {
+                                    // some sources might provide raw content as string
+                                    fullHtml = escapeHtml(item.content).replace(/\n/g, '<br>');
+                                } else if (item.body) {
+                                    fullHtml = escapeHtml(item.body).replace(/\n/g, '<br>');
+                                } else {
+                                    fullHtml = '<em>No details available</em>';
+                                }
+
+                                // preview (short) and hidden full content
+                                const preview = document.createElement('div');
+                                preview.className = 'changelog-preview';
+                                // take first 150 chars of plain text
+                                const plain = stripHtml(fullHtml);
+                                preview.textContent = plain.length > 150 ? plain.slice(0,150).trim() + '…' : plain;
+
+                                const details = document.createElement('div');
+                                details.className = 'changelog-full';
+                                details.innerHTML = fullHtml;
+                                details.style.display = 'none';
+
+                                const toggle = document.createElement('button');
+                                toggle.className = 'changelog-toggle btn btn-secondary';
+                                toggle.type = 'button';
+                                toggle.textContent = 'Voir plus';
+                                toggle.addEventListener('click', () => {
+                                    const shown = details.style.display !== 'none';
+                                    details.style.display = shown ? 'none' : 'block';
+                                    toggle.textContent = shown ? 'Voir plus' : 'Voir moins';
+                                });
+
+                                el.appendChild(title);
+                                el.appendChild(date);
+                                el.appendChild(preview);
+                                el.appendChild(details);
+                                el.appendChild(toggle);
                         container.appendChild(el);
                     });
                 }
+
+                    // utility functions
+                    function escapeHtml(unsafe) {
+                        return String(unsafe)
+                          .replace(/&/g, '&amp;')
+                          .replace(/</g, '&lt;')
+                          .replace(/>/g, '&gt;')
+                          .replace(/"/g, '&quot;')
+                          .replace(/'/g, '&#039;');
+                    }
+
+                    function stripHtml(html) {
+                        const tmp = document.createElement('div');
+                        tmp.innerHTML = html;
+                        return tmp.textContent || tmp.innerText || '';
+                    }
 
 
                 loadNews();
