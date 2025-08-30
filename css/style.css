@@ -170,6 +170,53 @@ nav ul li a:hover::after {
   width: 100%;
 }
 
+/* Nav icons alignment */
+.btn-icon {
+  margin-right: 8px;
+  width: 18px;
+  text-align: center;
+}
+
+/* Changelogs Section */
+.changelogs {
+  padding: 80px 0;
+  background-color: rgba(14,14,24,0.6);
+}
+
+.changelogs-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.changelog-item {
+  background-color: var(--card-bg);
+  border: var(--card-border);
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: var(--card-shadow);
+}
+
+.changelog-item h4 {
+  margin-bottom: 8px;
+  font-size: 18px;
+}
+
+.changelog-date {
+  font-size: 12px;
+  color: var(--text-secondary);
+  margin-bottom: 12px;
+}
+
+.changelog-body ul {
+  list-style: disc inside;
+  color: var(--text-secondary);
+}
+
+.changelog-placeholder {
+  color: var(--text-secondary);
+}
+
 /* Hero Section */
 .hero {
   height: 100vh;
