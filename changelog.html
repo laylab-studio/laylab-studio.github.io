@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LayLab - Premium In-Game Overlays</title>
+    <meta name="description" content="Custom premium in-game overlays for Predecessor, CS2, and League of Legends by LayLab.">
+
+    <!-- Favicon -->
+    <link rel="icon" href="images/favicon.png" type="image/png">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.4.2/css/all.css"/>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+<script src="https://sites.super.myninja.ai/_assets/ninja-daytona-script.js"></script>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <img src="images/logo.png" alt="NinjaTech AI Logo">
+                <div class="logo-text"></div>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#home"><i class="fas fa-home btn-icon" aria-hidden="true"></i>Home</a></li>
+                    <li><a href="#games"><i class="fas fa-gamepad btn-icon" aria-hidden="true"></i>Games</a></li>
+                    <li><a href="#features"><i class="fas fa-bolt btn-icon" aria-hidden="true"></i>Features</a></li>
+                    <li><a href="#screenshots"><i class="fas fa-image btn-icon" aria-hidden="true"></i>Screenshots</a></li>
+                    <li><a href="#download"><i class="fas fa-download btn-icon" aria-hidden="true"></i>Download</a></li>
+                    <li><a href="changelog.html"><i class="fa-solid fa-book btn-icon"></i>Changelogs</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="changelog">
+        <div class="container">
+
+
+
+
+
+
+                <script>async function loadNews() {
+                    try {
+                        const response = await fetch("/api/changelog");
+                        if (!response.ok) {
+                            console.error('Failed to fetch changelogs', response.status);
+                            return;
+                        }
+                        const changelogs = await response.json();
+                        renderChangelogs(changelogs);
+                    } catch (err) {
+                        console.error('Error loading changelogs', err);
+                    }
+                }
+
+                function renderChangelogs(changelogs) {
+                    if (!Array.isArray(changelogs)) return;
+                    const container = document.getElementById('changelogs-list');
+                    if (!container) return;
+                    container.innerHTML = '';
+                    changelogs.forEach(item => {
+                        const el = document.createElement('div');
+                        el.className = 'changelog-item';
+                        const title = document.createElement('h4');
+                        title.textContent = item.title || item.version || 'Update';
+                        const date = document.createElement('div');
+                        date.className = 'changelog-date';
+                        date.textContent = item.date || '';
+                        const body = document.createElement('div');
+                        body.className = 'changelog-body';
+                        body.innerHTML = Array.isArray(item.changes) ? '<ul>' + item.changes.map(c => '<li>'+c+'</li>').join('') + '</ul>' : (item.description || '');
+                        el.appendChild(title);
+                        el.appendChild(date);
+                        el.appendChild(body);
+                        container.appendChild(el);
+                    });
+                }
+
+
+                loadNews();
+                </script>
+
+
+
+
+        </div>
+    </section>
+
+    
+
+
+
+
+
+    <!-- About Section -->
+    <section class="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-image slide-right">
+                    <img src="images/about-image.png" alt="About NinjaTech AI">
+                </div>
+                <div class="about-text slide-up">
+                    <h2>About LayLab</h2>
+                    <p>LayLab delivers in-game overlays for Predecessor, CS2, and League of Legends, helping you stay prepared, track real-time stats, and avoid alt-tabbing. Built for gamers, by gamers.</p>
+                    <p>Our team of passionate gamers and developers created LayLab to solve the common problem of needing to alt-tab during intense gaming sessions to access critical information.</p>
+                    <a href="https://discord.gg/sv5k4XXctE" class="btn btn-primary">Join Our Discord</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>LayLab</h3>
+                    <p>Premium in-game overlays for competitive gamers.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-discord"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Navigation</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#games">Games</a></li>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#screenshots">Screenshots</a></li>
+                        <li><a href="#download">Download</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="#">Documentation</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Support</a></li>
+                        <li><a href="#">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Legal</h3>
+                    <ul>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Cookie Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="copyright">
+                    &copy; 2025 LayLab. All rights reserved.
+                </div>
+                <div class="footer-links">
+                    <a href="#">Contact</a>
+                    <a href="#">Careers</a>
+         
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="js/main.js"></script>
+
+
+    <script>
+    // Script pour mettre à jour dynamiquement le lien de téléchargement Windows
+    document.addEventListener('DOMContentLoaded', function () {
+      const btn = document.getElementById('download-windows');
+      if (!btn) return;
+      fetch('https://api.github.com/repos/laylab-studio/LayLab-Launcher/releases/latest')
+        .then(r => r.json())
+        .then(data => {
+          if (!data.assets) return;
+          const exe = data.assets.find(a => a.name.endsWith('.exe'));
+          if (exe && exe.browser_download_url) {
+            btn.href = exe.browser_download_url;
+            btn.setAttribute('target', '_blank');
+          } else {
+            btn.href = '#';
+            btn.textContent = 'Not available';
+          }
+        })
+        .catch(() => {
+          btn.href = '#';
+          btn.textContent = 'Error';
+        });
+    });
+  </script>
+</body>
+</html>

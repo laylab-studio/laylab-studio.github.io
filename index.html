@@ -15,8 +15,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.4.2/css/all.css"/>
+
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/style.css">
 <script src="https://sites.super.myninja.ai/_assets/ninja-daytona-script.js"></script>
@@ -31,11 +31,12 @@
             </div>
             <nav>
                 <ul>
-                    <li><a href="#home"><i class="fas fa-home btn-icon" aria-hidden="true"></i>Home 2025</a></li>
+                    <li><a href="#home"><i class="fas fa-home btn-icon" aria-hidden="true"></i>Home</a></li>
                     <li><a href="#games"><i class="fas fa-gamepad btn-icon" aria-hidden="true"></i>Games</a></li>
                     <li><a href="#features"><i class="fas fa-bolt btn-icon" aria-hidden="true"></i>Features</a></li>
                     <li><a href="#screenshots"><i class="fas fa-image btn-icon" aria-hidden="true"></i>Screenshots</a></li>
                     <li><a href="#download"><i class="fas fa-download btn-icon" aria-hidden="true"></i>Download</a></li>
+                    <li><a href="changelog.html"><i class="fa-solid fa-book btn-icon"></i>Changelogs</a></li>
                 </ul>
             </nav>
         </div>
@@ -49,46 +50,9 @@
 
 
 
-                <script>async function loadNews() {
-                    try {
-                        const response = await fetch("/api/changelog");
-                        if (!response.ok) {
-                            console.error('Failed to fetch changelogs', response.status);
-                            return;
-                        }
-                        const changelogs = await response.json();
-                        renderChangelogs(changelogs);
-                    } catch (err) {
-                        console.error('Error loading changelogs', err);
-                    }
-                }
-
-                function renderChangelogs(changelogs) {
-                    if (!Array.isArray(changelogs)) return;
-                    const container = document.getElementById('changelogs-list');
-                    if (!container) return;
-                    container.innerHTML = '';
-                    changelogs.forEach(item => {
-                        const el = document.createElement('div');
-                        el.className = 'changelog-item';
-                        const title = document.createElement('h4');
-                        title.textContent = item.title || item.version || 'Update';
-                        const date = document.createElement('div');
-                        date.className = 'changelog-date';
-                        date.textContent = item.date || '';
-                        const body = document.createElement('div');
-                        body.className = 'changelog-body';
-                        body.innerHTML = Array.isArray(item.changes) ? '<ul>' + item.changes.map(c => '<li>'+c+'</li>').join('') + '</ul>' : (item.description || '');
-                        el.appendChild(title);
-                        el.appendChild(date);
-                        el.appendChild(body);
-                        container.appendChild(el);
-                    });
-                }
 
 
-                loadNews();
-                </script>
+
             <div class="hero-content fade-in">
                 <h1>Elevate Your Gaming Experience</h1>
                 <p>Custom premium in-game overlays for Predecessor, CS2, and League of Legends. Stay in the action with real-time stats and insights without ever alt-tabbing.</p>
