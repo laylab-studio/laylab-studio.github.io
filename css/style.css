@@ -4,6 +4,7 @@
 :root {
   --dark-bg: #0e0e18;
   --card-bg: #1a1a2e;
+  --card-bg-coming-soon: #1a1a2e;
   --accent-color: #ee257d;
   --accent-hover: #ff3385;
   --text-primary: #ffffff;
@@ -179,14 +180,82 @@ nav ul li a:hover::after {
 
 /* Changelogs Section */
 .changelogs {
-  padding: 80px 0;
+  padding: 80px 0px;
+  padding-top: 130px !important;
   background-color: rgba(14,14,24,0.6);
+  height: fit-content !important;
 }
 
 .changelogs-list {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 20px;
+}
+
+/* Make changelogs list scrollable within a fixed-height viewport */
+.changelogs .container {
+  display: flex;
+  flex-direction: column;
+}
+
+.changelog-controls {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.changelog-tabs {
+  display: inline-flex;
+  gap: 8px;
+}
+
+.changelog-tab {
+  background: transparent;
+  color: var(--text-primary);
+  border: 1px solid rgba(255,255,255,0.06);
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.changelog-tab.active {
+  background: linear-gradient(90deg, rgba(238,37,125,0.12), rgba(255,51,133,0.08));
+  border-color: var(--accent-color);
+}
+
+/* Scroll container: limit height and allow vertical scroll */
+.changelogs-list {
+  /* no internal scrolling: use page scrolling + pagination controls */
+  padding-right: 0;
+}
+
+/* Pagination controls */
+.changelog-pagination {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 24px;
+}
+
+.changelog-page-btn {
+  background: transparent;
+  color: var(--text-primary);
+  border: 1px solid rgba(255,255,255,0.06);
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.changelog-page-btn.active {
+  background: var(--accent-color);
+  color: white;
+  border-color: var(--accent-color);
+}
+
+.changelog-nav {
+  display: flex;
+  gap: 6px;
+  align-items: center;
 }
 
 .changelog-item {
@@ -221,6 +290,8 @@ nav ul li a:hover::after {
   color: var(--text-secondary);
   margin-bottom: 12px;
 }
+
+.changelog-preview br { line-height: 1.4; }
 
 .changelog-full {
   margin-bottom: 12px;
@@ -337,8 +408,15 @@ nav ul li a:hover::after {
   transition: transform var(--transition-speed) ease;
 }
 
+.game-card-coming-soon {
+  filter: grayscale(100%);
+  opacity: 0.6;       /* facultatif pour accentuer l’effet */
+  cursor: not-allowed; /* montre à l’utilisateur que ce n’est pas cliquable */
+}
+
 .game-card:hover {
-  transform: translateY(-10px);
+  transform: translateY(-10px) !important;
+  cursor: pointer;
 }
 
 .game-card-image {
@@ -751,7 +829,7 @@ footer {
 }
 
 .slide-up {
-  animation: slideUp 0.8s ease-in-out;
+  animation: slideUp 0.8s ease-in-out !important;
 }
 
 .slide-right {

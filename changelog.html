@@ -51,7 +51,16 @@
                 <h2>Changelogs</h2>
                 <p>Follow every single update and new feature added to LayLab.</p>
             </div>
-            <div id="changelogs-list" class="changelogs-list">
+            <div class="changelog-controls">
+                <div class="changelog-tabs" role="tablist" aria-label="Changelog categories">
+                    <button class="changelog-tab" data-tab="launcher">LayLab Launcher</button>
+                    <button class="changelog-tab" data-tab="predecessor">Predecessor</button>
+                    <button class="changelog-tab" data-tab="cs2">CS2</button>
+                    <button class="changelog-tab" data-tab="lol">League of Legends</button>
+                </div>
+            </div>
+
+            <div id="changelogs-list" class="changelogs-list" data-current-tab="predecessor">
                 <!-- changelogs rendered here -->
                 <div class="changelog-placeholder">Loading changelogs...</div>
             </div>
@@ -68,7 +77,13 @@
 
 
 
-                <script>async function loadNews() {
+                <script>
+                let ALL_CHANGELOGS = [];
+                const PAGE_SIZE = 9; // items per page
+                let currentPage = 1;
+                let currentTab = 'predecessor';
+
+                async function loadNews() {
                     try {
                         const response = await fetch("/api/changelog");
                         if (!response.ok) {
@@ -76,89 +91,187 @@
                             return;
                         }
                         const changelogs = await response.json();
-                        renderChangelogs(changelogs);
+                        ALL_CHANGELOGS = Array.isArray(changelogs) ? changelogs : [];
+                        renderChangelogsForTab(currentTab, 1);
                     } catch (err) {
                         console.error('Error loading changelogs', err);
                     }
                 }
 
-                function renderChangelogs(changelogs) {
-                    if (!Array.isArray(changelogs)) return;
+                function renderChangelogs(items) {
                     const container = document.getElementById('changelogs-list');
                     if (!container) return;
                     container.innerHTML = '';
-                    changelogs.forEach(item => {
+                    items.forEach(item => {
                         const el = document.createElement('div');
                         el.className = 'changelog-item';
+                        // Determine category: if item.category exists use it, else default to 'predecessor'
+                        const cat = (item.category || item.tags || item.app || 'predecessor').toString().toLowerCase();
+                        el.setAttribute('data-category', cat);
                         const title = document.createElement('h4');
                         title.textContent = item.title || item.version || 'Update';
                         const date = document.createElement('div');
                         date.className = 'changelog-date';
                         date.textContent = item.date || '';
-                                const body = document.createElement('div');
-                                body.className = 'changelog-body';
+                        const body = document.createElement('div');
+                        body.className = 'changelog-body';
 
-                                // Normalize content: prefer item.changes (array), then description, then content/raw
-                                let fullHtml = '';
-                                if (Array.isArray(item.changes) && item.changes.length) {
-                                    fullHtml = '<ul>' + item.changes.map(c => '<li>'+escapeHtml(c)+'</li>').join('') + '</ul>';
-                                } else if (item.description) {
-                                    fullHtml = escapeHtml(item.description).replace(/\n/g, '<br>');
-                                } else if (item.content) {
-                                    // some sources might provide raw content as string
-                                    fullHtml = escapeHtml(item.content).replace(/\n/g, '<br>');
-                                } else if (item.body) {
-                                    fullHtml = escapeHtml(item.body).replace(/\n/g, '<br>');
-                                } else {
-                                    fullHtml = '<em>No details available</em>';
-                                }
+                        // Normalize content: prefer item.changes (array), then notes, description, then content/raw
+                        let fullHtml = '';
+                        if (Array.isArray(item.changes) && item.changes.length) {
+                            fullHtml = '<ul>' + item.changes.map(c => '<li>'+escapeHtml(c)+'</li>').join('') + '</ul>';
+                        } else if (item.notes) {
+                            // notes are often a newline-separated string with '- ' bullets
+                            const lines = String(item.notes).split(/\r?\n/).map(s => s.trim()).filter(Boolean);
+                            const isBulleted = lines.length && lines.every(l => l.startsWith('-'));
+                            if (isBulleted) {
+                                fullHtml = '<ul>' + lines.map(l => '<li>' + escapeHtml(l.replace(/^[-\s]+/, '')) + '</li>').join('') + '</ul>';
+                            } else {
+                                fullHtml = escapeHtml(item.notes).replace(/\r?\n/g, '<br>');
+                            }
+                        } else if (item.description) {
+                            fullHtml = escapeHtml(item.description).replace(/\n/g, '<br>');
+                        } else if (item.content) {
+                            // some sources might provide raw content as string
+                            fullHtml = escapeHtml(item.content).replace(/\n/g, '<br>');
+                        } else if (item.body) {
+                            fullHtml = escapeHtml(item.body).replace(/\n/g, '<br>');
+                        } else {
+                            fullHtml = '<em>No details available</em>';
+                        }
 
-                                // preview (short) and hidden full content
-                                const preview = document.createElement('div');
-                                preview.className = 'changelog-preview';
-                                // take first 150 chars of plain text
-                                const plain = stripHtml(fullHtml);
-                                preview.textContent = plain.length > 150 ? plain.slice(0,150).trim() + '…' : plain;
+                        // preview (short) and hidden full content
+                        const preview = document.createElement('div');
+                        preview.className = 'changelog-preview';
+                        // Build preview lines from available sources, preserve line breaks and prefix with a dash
+                        let previewLines = [];
+                        if (item.notes) {
+                            previewLines = String(item.notes).split(/\r?\n/).map(s => s.replace(/^[-\s]+/, '').trim()).filter(Boolean);
+                        } else if (Array.isArray(item.changes) && item.changes.length) {
+                            previewLines = item.changes.map(c => String(c).trim()).filter(Boolean);
+                        } else if (item.description) {
+                            previewLines = String(item.description).split(/\r?\n/).map(s => s.trim()).filter(Boolean);
+                        } else if (item.content) {
+                            previewLines = String(item.content).split(/\r?\n/).map(s => s.trim()).filter(Boolean);
+                        } else if (item.body) {
+                            previewLines = String(item.body).split(/\r?\n/).map(s => s.trim()).filter(Boolean);
+                        } else {
+                            const plain = stripHtml(fullHtml);
+                            previewLines = plain ? [plain] : [];
+                        }
 
-                                const details = document.createElement('div');
-                                details.className = 'changelog-full';
-                                details.innerHTML = fullHtml;
-                                details.style.display = 'none';
+                        if (previewLines.length === 0) {
+                            preview.innerHTML = '<em>No details available</em>';
+                        } else {
+                            // limit preview to first 3 lines, prefix with bullet/dash
+                            const shown = previewLines.slice(0, 3).map(l => '- ' + escapeHtml(l));
+                            let previewHtml = shown.join('<br>');
+                            // indicate more if longer
+                            if (previewLines.length > 3) previewHtml += ' <span style="opacity:.8">…</span>';
+                            preview.innerHTML = previewHtml;
+                        }
 
-                                const toggle = document.createElement('button');
-                                toggle.className = 'changelog-toggle btn btn-secondary';
-                                toggle.type = 'button';
-                                toggle.textContent = 'Voir plus';
-                                toggle.addEventListener('click', () => {
-                                    const shown = details.style.display !== 'none';
-                                    details.style.display = shown ? 'none' : 'block';
-                                    toggle.textContent = shown ? 'Voir plus' : 'Voir moins';
-                                });
+                        const details = document.createElement('div');
+                        details.className = 'changelog-full';
+                        details.innerHTML = fullHtml;
+                        details.style.display = 'none';
 
-                                el.appendChild(title);
-                                el.appendChild(date);
-                                el.appendChild(preview);
-                                el.appendChild(details);
-                                el.appendChild(toggle);
+                        const toggle = document.createElement('button');
+                        toggle.className = 'changelog-toggle btn btn-secondary';
+                        toggle.type = 'button';
+                        toggle.textContent = 'Voir plus';
+                        toggle.addEventListener('click', () => {
+                            const shown = details.style.display !== 'none';
+                            details.style.display = shown ? 'none' : 'block';
+                            toggle.textContent = shown ? 'Voir plus' : 'Voir moins';
+                        });
+
+                        el.appendChild(title);
+                        el.appendChild(date);
+                        el.appendChild(preview);
+                        el.appendChild(details);
+                        el.appendChild(toggle);
                         container.appendChild(el);
                     });
                 }
 
-                    // utility functions
-                    function escapeHtml(unsafe) {
-                        return String(unsafe)
-                          .replace(/&/g, '&amp;')
-                          .replace(/</g, '&lt;')
-                          .replace(/>/g, '&gt;')
-                          .replace(/"/g, '&quot;')
-                          .replace(/'/g, '&#039;');
+                function renderChangelogsForTab(tab, page) {
+                    currentTab = tab;
+                    currentPage = page;
+                    // filter
+                    const filtered = ALL_CHANGELOGS.filter(it => {
+                        const cat = (it.category || it.tags || it.app || 'predecessor').toString().toLowerCase();
+                        return cat === tab;
+                    }).slice();
+                    // sort by date descending (ISO date YYYY-MM-DD works with string compare)
+                    filtered.sort((a, b) => String(b.date || '').localeCompare(String(a.date || '')));
+                    const total = filtered.length;
+                    const pages = Math.max(1, Math.ceil(total / PAGE_SIZE));
+                    const start = (page - 1) * PAGE_SIZE;
+                    const pageItems = filtered.slice(start, start + PAGE_SIZE);
+                    renderChangelogs(pageItems);
+                    renderPagination(pages, page);
+                }
+
+                function renderPagination(totalPages, activePage) {
+                    // place pagination after the changelogs-list container
+                    let pag = document.querySelector('.changelog-pagination');
+                    if (!pag) {
+                        pag = document.createElement('div');
+                        pag.className = 'changelog-pagination';
+                        document.getElementById('changelogs-list').after(pag);
+                    }
+                    pag.innerHTML = '';
+                    const prev = document.createElement('button');
+                    prev.className = 'changelog-page-btn';
+                    prev.textContent = 'Prev';
+                    prev.disabled = activePage <= 1;
+                    prev.addEventListener('click', () => renderChangelogsForTab(currentTab, Math.max(1, activePage - 1)));
+                    pag.appendChild(prev);
+
+                    for (let p = 1; p <= totalPages; p++) {
+                        const b = document.createElement('button');
+                        b.className = 'changelog-page-btn' + (p === activePage ? ' active' : '');
+                        b.textContent = p;
+                        b.addEventListener('click', () => renderChangelogsForTab(currentTab, p));
+                        pag.appendChild(b);
                     }
 
-                    function stripHtml(html) {
-                        const tmp = document.createElement('div');
-                        tmp.innerHTML = html;
-                        return tmp.textContent || tmp.innerText || '';
-                    }
+                    const next = document.createElement('button');
+                    next.className = 'changelog-page-btn';
+                    next.textContent = 'Next';
+                    next.disabled = activePage >= totalPages;
+                    next.addEventListener('click', () => renderChangelogsForTab(currentTab, Math.min(totalPages, activePage + 1)));
+                    pag.appendChild(next);
+                }
+
+                function setActiveTab(name) {
+                    document.querySelectorAll('.changelog-tab').forEach(b => b.classList.toggle('active', b.getAttribute('data-tab') === name));
+                    const list = document.getElementById('changelogs-list');
+                    list.setAttribute('data-current-tab', name);
+                    // reset to page 1
+                    renderChangelogsForTab(name, 1);
+                }
+
+                document.querySelectorAll('.changelog-tab').forEach(t => t.addEventListener('click', () => setActiveTab(t.getAttribute('data-tab'))));
+                // default to predecessor tab
+                setActiveTab('predecessor');
+
+                // utility functions
+                function escapeHtml(unsafe) {
+                    return String(unsafe)
+                      .replace(/&/g, '&amp;')
+                      .replace(/</g, '&lt;')
+                      .replace(/>/g, '&gt;')
+                      .replace(/"/g, '&quot;')
+                      .replace(/'/g, '&#039;');
+                }
+
+                function stripHtml(html) {
+                    const tmp = document.createElement('div');
+                    tmp.innerHTML = html;
+                    return tmp.textContent || tmp.innerText || '';
+                }
 
 
                 loadNews();
