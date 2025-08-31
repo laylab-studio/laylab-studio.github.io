@@ -21,6 +21,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+
 }
 
 html {
@@ -36,6 +37,7 @@ body {
   background-image: url('../images/bg-pattern.png');
   background-size: cover;
   background-attachment: fixed;
+    user-select: none;
 }
 
 a {
@@ -48,11 +50,21 @@ a:hover {
   color: var(--accent-color);
 }
 
+#home > div {
+  justify-content: center !important;
+  display: flex !important;
+  align-items: center !important;
+}
+
 .container {
-  width: 100%;
-  max-width: 1200px;
+  width: 80%;
+  max-width: 1500px;
   margin: 0 auto;
   padding: 0 20px;
+
+
+
+
 }
 
 /* Button Styles */
@@ -325,9 +337,31 @@ nav ul li a:hover::after {
   z-index: -1;
 }
 
-.hero-content {
-  max-width: 600px;
-}
+      .hero h1 {
+        font-size: clamp(32px, 5.6vw, 56px);
+        font-weight: 800;
+        margin-bottom: 12px;
+        line-height: 1.05;
+        letter-spacing: -0.02em;
+      }
+    
+      .hero p {
+        font-size: clamp(14px, 1.6vw, 18px);
+        color: var(--text-secondary);
+        margin-bottom: 20px;
+        max-width: 60ch;
+        opacity: 0.95;
+      }
+    
+      .hero-buttons {
+        display: flex;
+        gap: 14px;
+        flex-wrap: wrap;
+      }
+    
+      .hero-buttons .btn { min-width: 140px; padding: 12px 20px; border-radius: 999px; font-weight:700; height: 80px; }
+      .hero-buttons .btn-primary { box-shadow: 0 12px 30px rgba(238,37,125,0.12); }
+      .hero-buttons .btn-secondary { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); }
 
 .hero h1 {
   font-size: 56px;
@@ -349,14 +383,48 @@ nav ul li a:hover::after {
 
 .hero-image {
   position: relative;
-
-  float: right;
-
-  width: 50%;
-  max-width: 500px;
-
- margin-top:-325px;
+  width: 48%;
+  max-width: 520px;
+  margin-top: 0;
 }
+
+
+
+.hero-media {
+
+  width: 490px;
+
+
+  opacity: 1;
+  transition: opacity 0.45s ease, transform 0.45s ease, visibility 0.45s;
+  will-change: opacity, transform;
+
+}
+
+.hero-video {
+  width: 100%;
+  border-radius: 18px;
+  border: var(--card-border);
+  box-shadow: var(--card-shadow);
+  display: block;
+
+
+
+
+}
+
+.video-sound-btn {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  background: rgba(0,0,0,0.6);
+  color: white;
+  border: 1px solid rgba(255,255,255,0.08);
+  padding: 8px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.video-sound-btn.hidden { opacity:0; visibility:hidden; pointer-events:none; transition: opacity 0.35s ease; }
 
 /* Games Section */
 .games {
@@ -738,6 +806,24 @@ footer {
   color: var(--accent-color);
 }
 
+/* Background video that covers the #home > div area */
+.bg-video {
+  position: absolute;
+  inset: 0; /* top:0; right:0; bottom:0; left:0; */
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* cover the area while preserving aspect ratio */
+  object-position: center center; /* center the visible area of the video */
+  z-index: -2; /* behind hero overlay and gradient */
+  pointer-events: none; /* allow clicks through the video */
+  opacity: 0.95;
+}
+
+/* Ensure hero overlays (content and gradient) appear above the video */
+.hero::before { z-index: -1; }
+/* .hero-content  { z-index: 1; position: relative; } */
+
+
 /* Responsive Styles */
 @media (max-width: 992px) {
   .hero h1 {
@@ -755,6 +841,24 @@ footer {
   
   .about-image, .about-text {
     width: 100%;
+  }
+}
+
+/* Hide promo video under 1254px and make hero content full-width */
+@media (max-width: 1254px) {
+  /* .hero-media {
+    opacity: 0 !important;
+    transform: translateY(-10px) !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  } */
+  .video-sound-btn {
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+  .hero-content {
+    max-width: 100%;
   }
 }
 
@@ -782,7 +886,7 @@ footer {
   }
   
   .hero-content {
-    margin: 0 auto;
+    /* margin: 0 auto; */
   }
   
   .hero-buttons {

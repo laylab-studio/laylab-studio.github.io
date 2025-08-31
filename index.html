@@ -1,26 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LayLab - Premium In-Game Overlays</title>
-    <meta name="description" content="Custom premium in-game overlays for Predecessor, CS2, and League of Legends by LayLab.">
+    <meta name="description"
+        content="Custom premium in-game overlays for Predecessor, CS2, and League of Legends by LayLab.">
 
     <!-- Favicon -->
     <link rel="icon" href="images/favicon.png" type="image/png">
-    
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.4.2/css/all.css"/>
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.4.2/css/all.css" />
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/style.css">
-<script src="https://sites.super.myninja.ai/_assets/ninja-daytona-script.js"></script>
+    <script src="https://sites.super.myninja.ai/_assets/ninja-daytona-script.js"></script>
 </head>
+
 <body>
     <!-- Header -->
     <header>
@@ -34,7 +38,8 @@
                     <li><a href="index.html"><i class="fas fa-home btn-icon" aria-hidden="true"></i>Home</a></li>
                     <li><a href="#games"><i class="fas fa-gamepad btn-icon" aria-hidden="true"></i>Games</a></li>
                     <li><a href="#features"><i class="fas fa-bolt btn-icon" aria-hidden="true"></i>Features</a></li>
-                    <li><a href="#screenshots"><i class="fas fa-image btn-icon" aria-hidden="true"></i>Screenshots</a></li>
+                    <li><a href="#screenshots"><i class="fas fa-image btn-icon" aria-hidden="true"></i>Screenshots</a>
+                    </li>
                     <li><a href="#download"><i class="fas fa-download btn-icon" aria-hidden="true"></i>Download</a></li>
                     <li><a href="changelog.html"><i class="fa-solid fa-book btn-icon"></i>Changelogs</a></li>
                 </ul>
@@ -44,6 +49,12 @@
 
     <!-- Hero Section -->
     <section class="hero" id="home">
+        <!-- Background video that covers the entire hero section -->
+        <video class="bg-video" autoplay muted loop playsinline aria-hidden="true">
+            <source src="images/bg.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+
         <div class="container">
 
 
@@ -54,8 +65,9 @@
 
 
             <div class="hero-content fade-in">
-                <h1>Elevate Your Gaming Experience</h1>
-                <p>Custom premium in-game overlays for Predecessor, CS2, and League of Legends. Stay in the action with real-time stats and insights without ever alt-tabbing.</p>
+                <h1>Elevate Your Skills</h1>
+                <p>Custom premium in-game overlays for Predecessor, CS2, and League of Legends.
+                    Stay in the action with real-time stats and insights without ever alt-tabbing.</p>
                 <div class="hero-buttons">
                     <a href="#download" class="btn btn-primary">
                         <i class="fas fa-download btn-icon"></i>
@@ -65,12 +77,26 @@
                         <i class="fas fa-info-circle btn-icon"></i>
                         Learn More
                     </a>
+
+
+             
+
+                </div>
+               
+
+              
+            </div>
+
+ <div class="hero-media">
+                    <video id="heroVideo" class="hero-video fade-in" playsinline loop>
+                        <source src="images/promovideo.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <button id="videoSoundBtn" class="video-sound-btn" aria-label="Activer le son">Activate
+                        Sound</button>
                 </div>
 
 
-
-            </div>
-            <img src="images/hero-app.png" alt="NinjaTech AI Overlay Interface" class="hero-image fade-in">
         </div>
     </section>
 
@@ -79,7 +105,8 @@
         <div class="container">
             <div class="section-header slide-up">
                 <h2>Supported Games</h2>
-                <p>Our premium overlays are designed specifically for these popular competitive games, with more coming soon.</p>
+                <p>Our premium overlays are designed specifically for these popular competitive games, with more coming
+                    soon.</p>
             </div>
             <div class="games-grid">
                 <!-- Predecessor Card -->
@@ -94,7 +121,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- CS2 Card -->
                 <div class="game-card game-card-coming-soon slide-up" style="animation-delay: 0.2s;">
                     <img src="images/cs2.png" alt="Counter-Strike 2" class="game-card-image">
@@ -107,7 +134,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- League of Legends Card -->
                 <div class="game-card game-card-coming-soon slide-up" style="animation-delay: 0.4s;">
                     <img src="images/lol.png" alt="League of Legends" class="game-card-image">
@@ -124,14 +151,15 @@
         </div>
     </section>
 
-   
+
 
     <!-- Features Section -->
     <section class="features" id="features">
         <div class="container">
             <div class="section-header slide-up">
                 <h2>Main Features</h2>
-                <p>Designed by gamers for gamers, our overlay software provides everything you need to enhance your gameplay.</p>
+                <p>Designed by gamers for gamers, our overlay software provides everything you need to enhance your
+                    gameplay.</p>
             </div>
             <div class="features-grid">
                 <!-- Feature 1 -->
@@ -140,18 +168,20 @@
                         <i class="fas fa-desktop"></i>
                     </div>
                     <h3>In-game Overlays</h3>
-                    <p>Seamlessly display in-game overlays for your favorite titles — so you never have to alt-tab again.</p>
+                    <p>Seamlessly display in-game overlays for your favorite titles — so you never have to alt-tab
+                        again.</p>
                 </div>
-                
+
                 <!-- Feature 2 -->
                 <div class="feature-card slide-up" style="animation-delay: 0.2s;">
                     <div class="feature-icon">
                         <i class="fas fa-bolt"></i>
                     </div>
                     <h3>Real-time Insights</h3>
-                    <p>Stay in the action with in-game overlays that deliver key stats and info for supported games — no alt-tab required.</p>
+                    <p>Stay in the action with in-game overlays that deliver key stats and info for supported games — no
+                        alt-tab required.</p>
                 </div>
-                
+
                 <!-- Feature 3 -->
                 <div class="feature-card slide-up" style="animation-delay: 0.4s;">
                     <div class="feature-icon">
@@ -160,16 +190,17 @@
                     <h3>Community & Progression</h3>
                     <p>Track your progress, unlock achievements, and connect within our ecosystem.</p>
                 </div>
-                
+
                 <!-- Feature 4 -->
                 <div class="feature-card slide-up" style="animation-delay: 0.6s;">
                     <div class="feature-icon">
                         <i class="fas fa-cogs"></i>
                     </div>
                     <h3>Customizable Interface</h3>
-                    <p>Personalize your overlay with custom themes, layouts, and information displays to match your preferences.</p>
+                    <p>Personalize your overlay with custom themes, layouts, and information displays to match your
+                        preferences.</p>
                 </div>
-                
+
                 <!-- Feature 5 -->
                 <div class="feature-card slide-up" style="animation-delay: 0.8s;">
                     <div class="feature-icon">
@@ -178,14 +209,15 @@
                     <h3>Performance Analytics</h3>
                     <p>Track your gaming performance over time with detailed statistics and improvement suggestions.</p>
                 </div>
-                
+
                 <!-- Feature 6 -->
                 <div class="feature-card slide-up" style="animation-delay: 1s;">
                     <div class="feature-icon">
                         <i class="fas fa-shield-alt"></i>
                     </div>
                     <h3>Secure & Lightweight</h3>
-                    <p>Our overlay runs efficiently in the background with minimal resource usage and complete security.</p>
+                    <p>Our overlay runs efficiently in the background with minimal resource usage and complete security.
+                    </p>
                 </div>
             </div>
         </div>
@@ -216,12 +248,13 @@
             </div>
             <div class="download-content">
                 <div class="download-buttons">
-                    <a href="https://github.com/YanX94/LayLabV2" target="_blank" class="download-button" aria-hidden="true" id="download-windows">
+                    <a href="https://github.com/YanX94/LayLabV2" target="_blank" class="download-button"
+                        aria-hidden="true" id="download-windows">
                         <i class="fab fa-windows download-icon"></i>
                         <span class="download-platform">Windows</span>
                         <span class="download-note">Lightweight & Free</span>
                     </a>
-                
+
                 </div>
             </div>
         </div>
@@ -236,8 +269,10 @@
                 </div>
                 <div class="about-text slide-up">
                     <h2>About LayLab</h2>
-                    <p>LayLab delivers in-game overlays for Predecessor, CS2, and League of Legends, helping you stay prepared, track real-time stats, and avoid alt-tabbing. Built for gamers, by gamers.</p>
-                    <p>Our team of passionate gamers and developers created LayLab to solve the common problem of needing to alt-tab during intense gaming sessions to access critical information.</p>
+                    <p>LayLab delivers in-game overlays for Predecessor, CS2, and League of Legends, helping you stay
+                        prepared, track real-time stats, and avoid alt-tabbing. Built for gamers, by gamers.</p>
+                    <p>Our team of passionate gamers and developers created LayLab to solve the common problem of
+                        needing to alt-tab during intense gaming sessions to access critical information.</p>
                     <a href="https://discord.gg/sv5k4XXctE" class="btn btn-primary">Join Our Discord</a>
                 </div>
             </div>
@@ -292,7 +327,7 @@
                 <div class="footer-links">
                     <a href="#">Contact</a>
                     <a href="#">Careers</a>
-         
+
                 </div>
             </div>
         </div>
@@ -303,28 +338,64 @@
 
 
     <script>
-    // Script pour mettre à jour dynamiquement le lien de téléchargement Windows
-    document.addEventListener('DOMContentLoaded', function () {
-      const btn = document.getElementById('download-windows');
-      if (!btn) return;
-      fetch('https://api.github.com/repos/laylab-studio/LayLab-Launcher/releases/latest')
-        .then(r => r.json())
-        .then(data => {
-          if (!data.assets) return;
-          const exe = data.assets.find(a => a.name.endsWith('.exe'));
-          if (exe && exe.browser_download_url) {
-            btn.href = exe.browser_download_url;
-            btn.setAttribute('target', '_blank');
-          } else {
-            btn.href = '#';
-            btn.textContent = 'Not available';
-          }
-        })
-        .catch(() => {
-          btn.href = '#';
-          btn.textContent = 'Error';
+        // Script pour mettre à jour dynamiquement le lien de téléchargement Windows
+        document.addEventListener('DOMContentLoaded', function () {
+            const btn = document.getElementById('download-windows');
+            if (!btn) return;
+            fetch('https://api.github.com/repos/laylab-studio/LayLab-Launcher/releases/latest')
+                .then(r => r.json())
+                .then(data => {
+                    if (!data.assets) return;
+                    const exe = data.assets.find(a => a.name.endsWith('.exe'));
+                    if (exe && exe.browser_download_url) {
+                        btn.href = exe.browser_download_url;
+                        btn.setAttribute('target', '_blank');
+                    } else {
+                        btn.href = '#';
+                        btn.textContent = 'Not available';
+                    }
+                })
+                .catch(() => {
+                    btn.href = '#';
+                    btn.textContent = 'Error';
+                });
         });
-    });
-  </script>
+    </script>
+    <script>
+        // Hero video autoplay with sound fallback handling
+        (function () {
+            const vid = document.getElementById('heroVideo');
+            const btn = document.getElementById('videoSoundBtn');
+            if (!vid) return;
+
+            // try to play with sound
+            vid.muted = false;
+            const tryPlay = vid.play();
+            if (tryPlay !== undefined) {
+                tryPlay.then(() => {
+                    // autoplay with sound succeeded
+                    if (btn) btn.classList.add('hidden');
+                }).catch(() => {
+                    // autoplay with sound blocked -> fallback to muted autoplay
+                    vid.muted = true;
+                    vid.play().catch(() => { });
+                    if (btn) btn.classList.remove('hidden');
+                });
+            }
+
+            if (btn) {
+                btn.addEventListener('click', () => {
+                    vid.muted = false;
+                    vid.play().then(() => {
+                        btn.classList.add('hidden');
+                    }).catch(() => {
+                        // still cannot play with sound
+                        vid.muted = true;
+                    });
+                });
+            }
+        })();
+    </script>
 </body>
+
 </html>
