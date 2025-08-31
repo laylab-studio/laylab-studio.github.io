@@ -846,12 +846,13 @@ footer {
 
 /* Hide promo video under 1254px and make hero content full-width */
 @media (max-width: 1254px) {
-  /* .hero-media {
+  .hero-media {
     opacity: 0 !important;
     transform: translateY(-10px) !important;
     visibility: hidden !important;
     pointer-events: none !important;
-  } */
+
+  }
   .video-sound-btn {
     opacity: 0 !important;
     visibility: hidden !important;
@@ -859,6 +860,24 @@ footer {
   }
   .hero-content {
     max-width: 100%;
+  }
+}
+
+@media (max-width: 1000px) {
+  .hero-media {
+    display: none !important;
+}
+}
+
+@media (max-width: 1177px) {
+  .changelogs {
+    padding: 80px 0 60px;
+  }
+  /* Hide Font Awesome icons in the top navigation under 1177px width */
+  nav .btn-icon {
+    display: none !important;
+    width: auto !important;
+    margin-right: 0 !important;
   }
 }
 
@@ -883,10 +902,6 @@ footer {
   .hero {
     padding-top: 120px;
     text-align: center;
-  }
-  
-  .hero-content {
-    /* margin: 0 auto; */
   }
   
   .hero-buttons {
