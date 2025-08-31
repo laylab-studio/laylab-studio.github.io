@@ -138,6 +138,7 @@ header {
 .logo {
   display: flex;
   align-items: center;
+  margin-top: 4px;
 }
 
 .logo img {
@@ -359,7 +360,7 @@ nav ul li a:hover::after {
         flex-wrap: wrap;
       }
     
-      .hero-buttons .btn { min-width: 140px; padding: 12px 20px; border-radius: 999px; font-weight:700; height: 80px; }
+      .hero-buttons .btn { min-width: 140px; padding: 12px 20px; border-radius: 15px; font-weight:700; height: 60px; }
       .hero-buttons .btn-primary { box-shadow: 0 12px 30px rgba(238,37,125,0.12); }
       .hero-buttons .btn-secondary { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); }
 
